@@ -57,74 +57,74 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+//
+//        Button sendToDetailsPage = findViewById(R.id.taskbutton);
+//        sendToDetailsPage.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                Intent sentToDetailsPage = new Intent(MainActivity.this, TaskDetail.class);
+//                sentToDetailsPage.putExtra("task", "Task One");
+//
+//                MainActivity.this.startActivity(sentToDetailsPage);
+//
+////                TextView userItem = MainActivity.this.findViewById(R.id.textView6);
+////                userItem.setText("TEST");
+//
+//
+//            }
+//
+//
+//        });
 
-        Button sendToDetailsPage = findViewById(R.id.taskbutton);
-        sendToDetailsPage.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-
-                Intent sentToDetailsPage = new Intent(MainActivity.this, TaskDetail.class);
-                sentToDetailsPage.putExtra("task", "Task One");
-
-                MainActivity.this.startActivity(sentToDetailsPage);
-
-//                TextView userItem = MainActivity.this.findViewById(R.id.textView6);
-//                userItem.setText("TEST");
-
-
-            }
-
-
-        });
-
-
-        Button sendToDetailsPage2 = findViewById(R.id.taskbutton2);
-        sendToDetailsPage2.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-
-                Intent sentToDetailsPage = new Intent(MainActivity.this, TaskDetail.class);
-                sentToDetailsPage.putExtra("task", "Task Two");
-
-                MainActivity.this.startActivity(sentToDetailsPage);
-
-//                TextView userItem = MainActivity.this.findViewById(R.id.textView6);
-//                userItem.setText("TEST");
-
-
-            }
-
-
-        });
-
-
+//
+//        Button sendToDetailsPage2 = findViewById(R.id.taskbutton2);
+//        sendToDetailsPage2.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                Intent sentToDetailsPage = new Intent(MainActivity.this, TaskDetail.class);
+//                sentToDetailsPage.putExtra("task", "Task Two");
+//
+//                MainActivity.this.startActivity(sentToDetailsPage);
+//
+////                TextView userItem = MainActivity.this.findViewById(R.id.textView6);
+////                userItem.setText("TEST");
+//
+//
+//            }
+//
+//
+//        });
 
 
 
-        Button sendToDetailsPage3 = findViewById(R.id.taskbutton3);
-        sendToDetailsPage3.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
 
 
-                Intent sentToDetailsPage = new Intent(MainActivity.this, TaskDetail.class);
-                sentToDetailsPage.putExtra("task", "Task Three");
-
-                MainActivity.this.startActivity(sentToDetailsPage);
-
-//                TextView userItem = MainActivity.this.findViewById(R.id.textView6);
-//                userItem.setText("TEST");
-
-
-            }
-
-
-        });
+//        Button sendToDetailsPage3 = findViewById(R.id.taskbutton3);
+//        sendToDetailsPage3.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                Intent sentToDetailsPage = new Intent(MainActivity.this, TaskDetail.class);
+//                sentToDetailsPage.putExtra("task", "Task Three");
+//
+//                MainActivity.this.startActivity(sentToDetailsPage);
+//
+////                TextView userItem = MainActivity.this.findViewById(R.id.textView6);
+////                userItem.setText("TEST");
+//
+//
+//            }
+//
+//
+//        });
 
 
 
