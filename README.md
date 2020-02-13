@@ -27,7 +27,7 @@ References - Class 27 frontrow video referenced for lab
 
 ![Home Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.51.51%20PM.png)
 
-![Home Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-12%20at%2012.59.15%20PM.png)
+![Detail Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.52.11%20PM.png)
 
 
 
