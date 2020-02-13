@@ -24,6 +24,13 @@ References - Class 27 frontrow video referenced for lab
 - Settings page is set up to save a username
 - the saved username will display on the home page
 
+# Day 2 - 
+References - Class 28 frontrow video referenced for lab 
+- Added a list of tasks that has a scrollable feature. 
+- For the scrollable feature a recycled view is used.
+- In the recycled view is a fragment with the tasks
+- The three hardcoded buttons were removed
+
 
 ![Home Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.51.51%20PM.png)
 
