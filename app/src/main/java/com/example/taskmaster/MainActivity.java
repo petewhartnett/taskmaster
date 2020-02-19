@@ -1,6 +1,11 @@
 package com.example.taskmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,27 +14,34 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.sql.SQLOutput;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
 
-// I used the 401d7 2/10/2020 class video as a reference for the below code
+// I used the 401d7 2/10/2020, 2/18/2020 class video as a reference for the below code
+// reference - https://developer.android.com/training/data-storage/room
 
+
+  // public List<Tasks> listOfTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       // Tasks a = new Tasks("Set alarm", "for wake up", "Assigned");
 
+        RecyclerView recyclerView = findViewById(R.id.fragment);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+      //  recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(new MyTasksRecyclerViewAdapter(this.listOfTasks, this)));
 
         Button sendToAddTasksPage = findViewById(R.id.button);
         sendToAddTasksPage.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
 
                 Intent sentToAddTasksIntent = new Intent(MainActivity.this, AddTasks.class);
 

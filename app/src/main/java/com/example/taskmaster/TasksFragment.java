@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,8 @@ public class TasksFragment extends Fragment {
         }
     }
 
+    public static DataBase newDB;
+    public List<Tasks> listOfTasks;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,24 +75,16 @@ public class TasksFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
+           // Tasks a = new Tasks("Set alarm", "for wake up", "Assigned");
+
+            newDB = Room.databaseBuilder(getContext(), DataBase.class, "task").allowMainThreadQueries().build();
+            this.listOfTasks = newDB.taskDao().getTasks();
+           // newDB.taskDao().save(a);
 
 
-            List<Tasks> listOfTasks = new ArrayList<>();
-
-            listOfTasks.add(new Tasks("Set alarm", "for wake up", "Assigned") );
-            listOfTasks.add(new Tasks("vacuum", "floor needs vacuuming", "Assigned") );
-            listOfTasks.add(new Tasks("wipe down counter", "clean the counter", "Assigned") );
-            listOfTasks.add(new Tasks("Set alarm", "for wake up", "Assigned") );
-            listOfTasks.add(new Tasks("vacuum", "floor needs vacuuming", "Assigned") );
-            listOfTasks.add(new Tasks("wipe down counter", "clean the counter", "Assigned") );
-
-            listOfTasks.add(new Tasks("Set alarm", "for wake up", "Assigned") );
-            listOfTasks.add(new Tasks("vacuum", "floor needs vacuuming", "Assigned") );
-            listOfTasks.add(new Tasks("wipe down counter", "clean the counter", "Assigned") );
+       recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(listOfTasks, mListener));
 
 
-
-            recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(listOfTasks, mListener));
         }
         return view;
     }
