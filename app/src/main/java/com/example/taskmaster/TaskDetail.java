@@ -21,11 +21,12 @@ public class TaskDetail extends AppCompatActivity {
         String getTask2 = getIntent().getStringExtra("mBodyView");
         String getTask3 = getIntent().getStringExtra("mAssignedView");
 
-        TextView taskText = findViewById(R.id.textView6);
-        taskText.setText(getTask);
+        TextView taskText2 = findViewById(R.id.textView6);
+        taskText2.setText(getTask);
 
-        TextView taskText2 = findViewById(R.id.textView9);
-        taskText2.setText(getTask2);
+
+        TextView taskText = findViewById(R.id.textView9);
+        taskText.setText(getTask2);
 
         TextView taskText3 = findViewById(R.id.textView10);
         taskText3.setText(getTask3);
