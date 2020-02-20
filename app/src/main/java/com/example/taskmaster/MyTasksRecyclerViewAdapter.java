@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.taskmaster.TasksFragment.OnListFragmentInteractionListener;
 import com.example.taskmaster.dummy.DummyContent.DummyItem;
@@ -52,18 +54,42 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
         holder.mAssignedView.setText(mValues.get(position).getState());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+            // Reference - Crystal and Mattaus Helped me solve the if else logic below where it does a toast when on All-Tasks page instead of being sent to the details.
+
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
 
-                Intent sentToDetailsPage = new Intent(context, TaskDetail.class);
-               // sentToDetailsPage.putExtra("mTitleView", mTitleView);
-                sentToDetailsPage.putExtra("mTitleView", holder.mTitleView.getText());
-                sentToDetailsPage.putExtra("mBodyView", holder.mBodyView.getText());
-                sentToDetailsPage.putExtra("mAssignedView", holder.mAssignedView.getText());
+                if (context.getClass().getName().equals("com.example.taskmaster.AllTasks")) {
+                    Log.i("PETE", "-----------------" + context.getClass().getName().equals("com.example.taskmaster.AllTasks"));
+                    {
 
-                context.startActivity(sentToDetailsPage);
+                        CharSequence text =  holder.mBodyView.getText();
+                        int length = Toast.LENGTH_LONG;
+                        Toast renderToast = Toast.makeText(context, text, length);
+                        renderToast.show();
+                        renderToast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+                    }
 
+                }
+
+//                if(context.getClass().getName().equals"")
+
+                else if (!context.getClass().getName().equals("com.example.taskmaster.AllTasks")) {
+
+                    Intent sentToDetailsPage = new Intent(context, TaskDetail.class);
+                    // sentToDetailsPage.putExtra("mTitleView", mTitleView);
+                    sentToDetailsPage.putExtra("mTitleView", holder.mTitleView.getText());
+                    sentToDetailsPage.putExtra("mBodyView", holder.mBodyView.getText());
+                    sentToDetailsPage.putExtra("mAssignedView", holder.mAssignedView.getText());
+
+                    context.startActivity(sentToDetailsPage);
+
+                }
             }
         });
     }
