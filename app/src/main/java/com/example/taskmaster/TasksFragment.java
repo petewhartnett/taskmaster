@@ -61,6 +61,7 @@ public class TasksFragment extends Fragment {
 
     public static DataBase newDB;
     public List<Tasks> listOfTasks;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
