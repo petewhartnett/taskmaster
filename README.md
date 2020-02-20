@@ -39,6 +39,12 @@ also used https://developer.android.com/training/data-storage/room
 - Users can now save tasks
 - Users saved tasks will be displayed in the recycled view, feature working correctly
 
+# Day 5 - 
+
+- Added a a recycler view of all tasks to all task page
+- replaced the route to detail page with a toast
+- the toast displays the body of the task selected 
+
 ![Home Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.51.51%20PM.png)
 
 ![Detail Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.52.11%20PM.png)
