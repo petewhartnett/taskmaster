@@ -63,9 +63,9 @@ also used https://developer.android.com/training/data-storage/room
 - replaced the route to detail page with a toast
 - the toast displays the body of the task selected 
 
-![Home Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.51.51%20PM.png)
+The Below image has the recycler view with the toast that siplays the body when clicked. 
+![Home Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-20%20at%202.33.35%20PM.png)
 
-![Detail Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.52.11%20PM.png)
 
 
 
