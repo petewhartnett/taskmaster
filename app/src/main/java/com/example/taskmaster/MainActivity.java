@@ -14,6 +14,10 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.amazonaws.mobile.config.AWSConfiguration;
+import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+
 import java.sql.SQLOutput;
 import java.util.List;
 
@@ -26,11 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
 
   // public List<Tasks> listOfTasks;
+  private AWSAppSyncClient mAWSAppSyncClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAWSAppSyncClient = AWSAppSyncClient.builder()
+                .context(getApplicationContext())
+                .awsConfiguration(new AWSConfiguration(getApplicationContext()))
+                .build();
        // Tasks a = new Tasks("Set alarm", "for wake up", "Assigned");
 
         RecyclerView recyclerView = findViewById(R.id.fragment);

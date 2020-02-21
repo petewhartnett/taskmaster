@@ -3,21 +3,36 @@ package com.example.taskmaster;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
+import com.amazonaws.amplify.generated.graphql.CreateTasksMutation;
+import com.amazonaws.amplify.generated.graphql.CreateTodoMutation;
+import com.amazonaws.mobile.config.AWSConfiguration;
+import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.apollographql.apollo.ApolloClient;
+import com.apollographql.apollo.GraphQLCall;
+import com.apollographql.apollo.exception.ApolloException;
 import com.example.taskmaster.dummy.DummyContent;
 import com.example.taskmaster.dummy.DummyContent.DummyItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import type.CreateTasksInput;
+import type.CreateTodoInput;
 
 /**
  * A fragment representing a list of Items.
@@ -37,6 +52,10 @@ public class TasksFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
+
+
+    private AWSAppSyncClient mAWSAppSyncClient;
+
     public TasksFragment() {
     }
 
@@ -52,7 +71,11 @@ public class TasksFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
+
+
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -62,10 +85,25 @@ public class TasksFragment extends Fragment {
     public static DataBase newDB;
     public List<Tasks> listOfTasks;
 
+
+
+
+
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tasks_list, container, false);
+
+        mAWSAppSyncClient = AWSAppSyncClient.builder()
+                .context(view.getContext().getApplicationContext())
+                .awsConfiguration(new AWSConfiguration(view.getContext().getApplicationContext()))
+                .build();
+
+        runMutation();
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -89,6 +127,41 @@ public class TasksFragment extends Fragment {
         }
         return view;
     }
+
+
+    // Taken from the aws-amplify docs -https://aws-amplify.github.io/docs/sdk/android/start
+
+    public void runMutation(){
+        CreateTasksInput createTasksInput = CreateTasksInput.builder().
+
+
+                title("test title").
+                body("test body").
+                state("test").
+                build();
+
+        mAWSAppSyncClient.mutate(CreateTasksMutation.builder().input(createTasksInput).build())
+                .enqueue(mutationCallback);
+    }
+
+    private GraphQLCall.Callback<CreateTasksMutation.Data> mutationCallback = new GraphQLCall.Callback<CreateTasksMutation.Data>() {
+
+        @Override
+        public void onResponse(@Nonnull com.apollographql.apollo.api.Response<CreateTasksMutation.Data> response) {
+
+        }
+
+        @Override
+        public void onFailure(@Nonnull ApolloException e) {
+            Log.e("Error", e.toString());
+        }
+    };
+
+
+
+
+
+
 
 
     @Override
