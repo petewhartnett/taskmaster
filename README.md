@@ -74,9 +74,10 @@ also used the AWS Docs - https://aws-amplify.github.io/docs/android/authenticati
 - Added login feature from AWS Authentication 
 - Added logout ability for users
 - users are prompted to create an account with email, username, password, and phonenumber
-![Home Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.51.51%20PM.png)
+![Home Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-25%20at%2012.44.56%20PM.png)
 
-![Detail Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-13%20at%2012.52.11%20PM.png)
+![Detail Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-25%20at%2012.57.01%20PM.png
+)
 
 
 
