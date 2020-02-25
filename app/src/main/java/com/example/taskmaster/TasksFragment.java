@@ -134,7 +134,6 @@ public class TasksFragment extends Fragment {
     public void runMutation(){
         CreateTasksInput createTasksInput = CreateTasksInput.builder().
 
-
                 title("test title").
                 body("test body").
                 state("test").

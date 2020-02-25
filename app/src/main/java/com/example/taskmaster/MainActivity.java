@@ -11,10 +11,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amazonaws.mobile.client.AWSMobileClient;
+import com.amazonaws.mobile.client.Callback;
+import com.amazonaws.mobile.client.SignOutOptions;
+import com.amazonaws.mobile.client.UserState;
+import com.amazonaws.mobile.client.UserStateDetails;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 
@@ -59,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-
         });
 
 
@@ -78,6 +83,67 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+
+        Button logout= findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+
+                AWSMobileClient.getInstance().signOut(SignOutOptions.builder().signOutGlobally(true).build(), new Callback<Void>() {
+                    @Override
+                    public void onResult(final Void result) {
+                        Log.d("tag", "signed-out");
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Log.e("tag", "sign-out error", e);
+                    }
+                });
+//
+//                Intent sentToAllTasksIntent = new Intent(MainActivity.this, AllTasks.class);
+//
+//                MainActivity.this.startActivity(sentToAllTasksIntent);
+
+            }
+
+
+        });
+
+
+
+
+        AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
+
+                    @Override
+                    public void onResult(UserStateDetails userStateDetails) {
+                        Log.i("INIT", "onResult: " + userStateDetails.getUserState());
+                        if (userStateDetails.getUserState().equals(UserState.SIGNED_OUT)) {
+                            AWSMobileClient.getInstance().showSignIn(MainActivity.this, new Callback<UserStateDetails>() {
+                                @Override
+                                public void onResult(UserStateDetails result) {
+                                    Log.d("tag", "onResult: " + result.getUserState());
+                                }
+
+                                @Override
+                                public void onError(Exception e) {
+                                    Log.e("tag", "onError: ", e);
+                                }
+                            });
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Log.e("INIT", "Initialization error.", e);
+                    }
+                }
+        );
+
+
 
 //
 //        Button sendToDetailsPage = findViewById(R.id.taskbutton);
