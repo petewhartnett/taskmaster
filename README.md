@@ -79,7 +79,7 @@ also used the AWS Docs - https://aws-amplify.github.io/docs/android/authenticati
 ![Detail Page Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-25%20at%2012.57.01%20PM.png
 )
 
-
+APK - https://github.com/petewhartnett/taskmaster/blob/master/app-debug.apk
 
 
 
