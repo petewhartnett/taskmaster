@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amazonaws.amplify.generated.graphql.ListTodosQuery;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.SignOutOptions;
@@ -23,7 +24,17 @@ import com.amazonaws.mobile.client.UserState;
 import com.amazonaws.mobile.client.UserStateDetails;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferService;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferState;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
+import com.amazonaws.services.s3.AmazonS3Client;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.SQLOutput;
 import java.util.List;
 
@@ -113,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        getApplicationContext().startService(new Intent(getApplicationContext(), TransferService.class));
 
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
 
@@ -125,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onResult(UserStateDetails result) {
                                     Log.d("tag", "onResult: " + result.getUserState());
+                                    //if user is signed in it will get file
+                                if(result.getUserState().equals(UserState.SIGNED_IN)){
+                                    uploadWithTransferUtility();
+                                }
                                 }
 
                                 @Override
@@ -134,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
                             });
 
                         }
+
                     }
 
                     @Override
@@ -142,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-
 
 
 //
@@ -275,6 +290,69 @@ public class MainActivity extends AppCompatActivity {
         textView.setVisibility(View.VISIBLE);
 
 
+    }
+
+
+
+
+    public void uploadWithTransferUtility() {
+
+        TransferUtility transferUtility =
+                TransferUtility.builder()
+                        .context(getApplicationContext())
+                        .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
+                        .s3Client(new AmazonS3Client(AWSMobileClient.getInstance()))
+                        .build();
+
+        File file = new File(getApplicationContext().getFilesDir(), "sample.txt");
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.append("Howdy World!");
+            writer.close();
+        }
+        catch(Exception e) {
+            Log.e("tag", e.getMessage());
+        }
+
+        TransferObserver uploadObserver =
+                transferUtility.upload(
+                        "public/sample.txt",
+                        new File(getApplicationContext().getFilesDir(),"sample.txt"));
+
+        // Attach a listener to the observer to get state update and progress notifications
+        uploadObserver.setTransferListener(new TransferListener() {
+
+            @Override
+            public void onStateChanged(int id, TransferState state) {
+                if (TransferState.COMPLETED == state) {
+                    // Handle a completed upload.
+                }
+            }
+
+            @Override
+            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
+                float percentDonef = ((float) bytesCurrent / (float) bytesTotal) * 100;
+                int percentDone = (int)percentDonef;
+
+                Log.d("tag", "ID:" + id + " bytesCurrent: " + bytesCurrent
+                        + " bytesTotal: " + bytesTotal + " " + percentDone + "%");
+            }
+
+            @Override
+            public void onError(int id, Exception ex) {
+                // Handle errors
+            }
+
+        });
+
+        // If you prefer to poll for the data, instead of attaching a
+        // listener, check for the state and progress in the observer.
+        if (TransferState.COMPLETED == uploadObserver.getState()) {
+            // Handle a completed upload.
+        }
+
+        Log.d("tag", "Bytes Transferred: " + uploadObserver.getBytesTransferred());
+        Log.d("tag", "Bytes Total: " + uploadObserver.getBytesTotal());
     }
 
 

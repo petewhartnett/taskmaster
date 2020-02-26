@@ -6,10 +6,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.amazonaws.amplify.generated.graphql.CreateTasksMutation;
+import com.amazonaws.mobile.config.AWSConfiguration;
+import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.apollographql.apollo.GraphQLCall;
+import com.apollographql.apollo.exception.ApolloException;
+
+import javax.annotation.Nonnull;
+
+import type.CreateTasksInput;
 
 import static com.example.taskmaster.TasksFragment.newDB;
 
@@ -18,11 +29,18 @@ public class AddTasks extends AppCompatActivity {
 
 // I used the 401d7 2/10/2020 class video as a reference for the below code
 
+    private AWSAppSyncClient mAWSAppSyncClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_tasks);
+
+
+        mAWSAppSyncClient = AWSAppSyncClient.builder()
+                .context(getApplicationContext())
+                .awsConfiguration(new AWSConfiguration(getApplicationContext()))
+                .build();
 
 
         Button submitTask = findViewById(R.id.submit);
@@ -43,14 +61,16 @@ public class AddTasks extends AppCompatActivity {
 
 
 
-                newDB.taskDao().save(newTask);
+               // newDB.taskDao().save(newTask);
+
+                runMutation(userInputText, userInputText2, userInputText3);
 
                Intent sentToAddTasksIntent = new Intent(AddTasks.this, MainActivity.class);
 
                AddTasks.this.startActivity(sentToAddTasksIntent);
 
 
-               
+
 
 
 
@@ -66,5 +86,39 @@ public class AddTasks extends AppCompatActivity {
 
 
 
+
   }
+
+
+
+    public void runMutation(String title, String body, String state){
+        CreateTasksInput createTasksInput = CreateTasksInput.builder().
+
+                title(title).
+                body(body).
+                state(state).
+                build();
+
+        mAWSAppSyncClient.mutate(CreateTasksMutation.builder().input(createTasksInput).build())
+                .enqueue(mutationCallback);
+    }
+
+    private GraphQLCall.Callback<CreateTasksMutation.Data> mutationCallback = new GraphQLCall.Callback<CreateTasksMutation.Data>() {
+
+        @Override
+        public void onResponse(@Nonnull com.apollographql.apollo.api.Response<CreateTasksMutation.Data> response) {
+       // Intent sendUserToMain = new Intent(addTasks.this,  )
+
+        }
+
+        @Override
+        public void onFailure(@Nonnull ApolloException e) {
+            Log.e("Error", e.toString());
+        }
+    };
+
+
+
+
+
 }
