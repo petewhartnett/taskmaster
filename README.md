@@ -82,7 +82,18 @@ also used the AWS Docs - https://aws-amplify.github.io/docs/android/authenticati
 APK - https://github.com/petewhartnett/taskmaster/blob/master/app-debug.apk
 
 
+# Day 7/8 - 
+References - Class 2/25/2020 Front Row video referenced for AWS S3 set up. 
+also used AWS s3 documentation. 
+- Set up S3 with aomplify for use in the taskmaster application
+- tested S3 bucket my manually entering information from the app, test works
+- Users are still not able to uplead information however
+- Fixed the logout issue
+- Fixed the username issue
 
+Of Note: No new screen shots as most changes were in the backend old screen shots still apply
+
+APK - 
 
 
 
