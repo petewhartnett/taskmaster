@@ -54,20 +54,18 @@ public class AddTasks extends AppCompatActivity {
                String userInputText2 = userInput2.getText().toString();
                String userInputText3 = userInput3.getText().toString();
 
-               Tasks newTask = new Tasks(userInputText, userInputText2, userInputText3 );
+               //Tasks newTask = new Tasks(userInputText, userInputText2, userInputText3 );
 
               // TextView userItem = AddTasks.this.findViewById(R.id.textView2);
                //userItem.setText("Submitted");
-
-
 
                // newDB.taskDao().save(newTask);
 
                 runMutation(userInputText, userInputText2, userInputText3);
 
-               Intent sentToAddTasksIntent = new Intent(AddTasks.this, MainActivity.class);
-
-               AddTasks.this.startActivity(sentToAddTasksIntent);
+//               Intent sentToAddTasksIntent = new Intent(AddTasks.this, MainActivity.class);
+//
+//               AddTasks.this.startActivity(sentToAddTasksIntent);
 
 
 
@@ -108,6 +106,11 @@ public class AddTasks extends AppCompatActivity {
         @Override
         public void onResponse(@Nonnull com.apollographql.apollo.api.Response<CreateTasksMutation.Data> response) {
        // Intent sendUserToMain = new Intent(addTasks.this,  )
+
+            Intent sentToAddTasksIntent = new Intent(AddTasks.this, MainActivity.class);
+
+            AddTasks.this.startActivity(sentToAddTasksIntent);
+
 
         }
 

@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                AWSMobileClient.getInstance().signOut();
                 AWSMobileClient.getInstance().signOut(SignOutOptions.builder().signOutGlobally(true).build(), new Callback<Void>() {
                     @Override
                     public void onResult(final Void result) {
@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 //
 //                Intent sentToAllTasksIntent = new Intent(MainActivity.this, AllTasks.class);
-//
 //                MainActivity.this.startActivity(sentToAllTasksIntent);
 
             }
@@ -123,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        //TextView awsUsername = findViewById(R.id.username);
 
         getApplicationContext().startService(new Intent(getApplicationContext(), TransferService.class));
 
@@ -205,9 +205,6 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
-
-
-
 //        Button sendToDetailsPage3 = findViewById(R.id.taskbutton3);
 //        sendToDetailsPage3.setOnClickListener(new View.OnClickListener() {
 //
@@ -246,17 +243,9 @@ public class MainActivity extends AppCompatActivity {
 //                TextView userItem = MainActivity.this.findViewById(R.id.textView6);
 //                userItem.setText("TEST");
 
-
-
             }
 
-
         });
-
-
-
-
-
 
     }
 
@@ -272,7 +261,6 @@ public class MainActivity extends AppCompatActivity {
         textView.setVisibility(View.VISIBLE);
 
 
-
     }
 
 
@@ -283,8 +271,11 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         //TextView settingsupdate = findViewById(R.id.settingsupdated);
 
-        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String username = p.getString("username", "default");
+
+        String username = AWSMobileClient.getInstance().getUsername();
+        //this is form the settings for username
+      //  SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+      //  String username = p.getString("username", "default");
 
         textView.setText(username + "'s Task List");
         textView.setVisibility(View.VISIBLE);

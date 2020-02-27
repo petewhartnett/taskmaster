@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.amazonaws.amplify.generated.graphql.CreateTasksMutation;
 import com.amazonaws.amplify.generated.graphql.CreateTodoMutation;
+import com.amazonaws.amplify.generated.graphql.ListTaskssQuery;
 import com.amazonaws.amplify.generated.graphql.ListTodosQuery;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
@@ -101,6 +102,7 @@ public class TasksFragment extends Fragment {
                 .build();
 
         //runMutation();
+        runQuery();
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -113,12 +115,12 @@ public class TasksFragment extends Fragment {
             }
           // Tasks a = new Tasks("Set alarm", "for wake up", "Assigned");
 
-            newDB = Room.databaseBuilder(getContext(), DataBase.class, "task").allowMainThreadQueries().build();
+           newDB = Room.databaseBuilder(getContext(), DataBase.class, "task").allowMainThreadQueries().build();
             this.listOfTasks = newDB.taskDao().getTasks();
           // newDB.taskDao().save(a);
 
 
-       recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(listOfTasks, mListener));
+      recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(listOfTasks, mListener));
 
 
         }
@@ -156,18 +158,23 @@ public class TasksFragment extends Fragment {
 
 
     public void runQuery(){
-        mAWSAppSyncClient.query(ListTodosQuery.builder().build())
+        mAWSAppSyncClient.query(ListTaskssQuery.builder().build())
                 .responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
                 .enqueue(todosCallback);
     }
-
-    private GraphQLCall.Callback<ListTodosQuery.Data> todosCallback = new GraphQLCall.Callback<ListTodosQuery.Data>() {
+//may need to change
+    private GraphQLCall.Callback<ListTaskssQuery.Data> todosCallback = new GraphQLCall.Callback<ListTaskssQuery.Data>() {
         @Override
-        public void onResponse(@Nonnull Response<ListTodosQuery.Data> response) {
-            Log.i("Results", response.data().listTodos().items().toString());
+        public void onResponse(@Nonnull Response<ListTaskssQuery.Data> response) {
+            Log.i("Results", response.data().listTaskss().items().toString());
+
+            for(ListTaskssQuery.Item item : response.data().listTaskss().items() ){
+                listOfTasks.add(new Tasks(item.title(), item.body(), item.state()));
+
+            }
         }
 
-        
+
         @Override
         public void onFailure(@Nonnull ApolloException e) {
             Log.e("ERROR", e.toString());
