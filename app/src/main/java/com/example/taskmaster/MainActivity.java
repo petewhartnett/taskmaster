@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               // AWSMobileClient.getInstance().signOut();
+               AWSMobileClient.getInstance().signOut();
                 AWSMobileClient.getInstance().signOut(SignOutOptions.builder().signOutGlobally(true).build(), new Callback<Void>() {
                     @Override
                     public void onResult(final Void result) {
