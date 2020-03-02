@@ -97,4 +97,16 @@ APK -
 
 
 
+# Day 9 - 
+References - Class 2/26/2020 Front Row video referenced for AWS S3 set up. 
+also used AWS s3 documentation. 
+- Set up google firebase account 
+- Set up amplify push notifications
+- created an amazon pinpoint
+- set up a segment in pinpoint
+- set up a campaign in pinpoint
+
+Current status of nomtification - Everything is working on the back end with no errors with pinpoint or firebase, but it does not show up on the emulator of the device. 
+
+Of Note: No new screen shots as most changes were in the backend old screen shots still apply
 
