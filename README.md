@@ -108,5 +108,6 @@ also used AWS s3 documentation.
 
 Current status of nomtification - Everything is working on the back end with no errors with pinpoint or firebase, but it does not show up on the emulator of the device. 
 
-Of Note: No new screen shots as most changes were in the backend old screen shots still apply
+![Notification Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-02%20at%202.27.34%20PM.png)
+
 
