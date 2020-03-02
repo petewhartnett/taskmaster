@@ -110,7 +110,6 @@ Current status of nomtification - Everything is working on the back end with no 
 
 ![Notification PinPoint Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-02%20at%202.27.34%20PM.png)
 
-https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-02%20at%202.27.57%20PM.png
 
-![Notification FireBase Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-02-25%20at%2012.57.01%20PM.png
+![Notification FireBase Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-02%20at%202.27.57%20PM.png
 )
