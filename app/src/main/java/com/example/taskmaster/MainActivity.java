@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getPinpointManager(getApplicationContext());
+
 
         mAWSAppSyncClient = AWSAppSyncClient.builder()
                 .context(getApplicationContext())
@@ -74,12 +74,15 @@ public class MainActivity extends AppCompatActivity {
                 .build();
        // Tasks a = new Tasks("Set alarm", "for wake up", "Assigned");
 
+        getPinpointManager(getApplicationContext());
+
         RecyclerView recyclerView = findViewById(R.id.fragment);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
       //  recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(new MyTasksRecyclerViewAdapter(this.listOfTasks, this)));
 
         Button sendToAddTasksPage = findViewById(R.id.button);
         sendToAddTasksPage.setOnClickListener(new View.OnClickListener() {
+
 
             @Override
             public void onClick(View view) {
@@ -128,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 //
-//                Intent sentToAllTasksIntent = new Intent(MainActivity.this, AllTasks.class);
-//                MainActivity.this.startActivity(sentToAllTasksIntent);
+                Intent sentToAllTasksIntent = new Intent(MainActivity.this, AllTasks.class);
+                MainActivity.this.startActivity(sentToAllTasksIntent);
 
             }
 

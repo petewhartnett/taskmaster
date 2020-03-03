@@ -38,6 +38,8 @@ import javax.annotation.Nonnull;
 import type.CreateTasksInput;
 import type.CreateTodoInput;
 
+import static com.example.taskmaster.MainActivity.getPinpointManager;
+
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -72,6 +74,7 @@ public class TasksFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
