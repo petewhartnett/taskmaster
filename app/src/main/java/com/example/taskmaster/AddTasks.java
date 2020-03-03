@@ -5,11 +5,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amazonaws.amplify.generated.graphql.CreateTasksMutation;
@@ -27,7 +29,7 @@ import static com.example.taskmaster.TasksFragment.newDB;
 public class AddTasks extends AppCompatActivity {
 
 
-// I used the 401d7 2/10/2020 class video as a reference for the below code
+// I used the 401d7 2/10/2020, and 3/02/2020 class video as a reference for the below code
 
     private AWSAppSyncClient mAWSAppSyncClient;
 
@@ -35,6 +37,25 @@ public class AddTasks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_tasks);
+
+        //intent for sharing image below
+        Intent intent = getIntent();
+        Uri data = intent.getData();
+
+
+        //reference - below intent for image adding is from android documents - https://developer.android.com/reference/android/content/Intent#ACTION_SENDTO
+
+        if (intent.getType() != null && intent.getType().contains("image/")) {
+
+            Uri newImage = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+
+            if(newImage != null){
+                ImageView imageView = findViewById(R.id.addTaskImage);
+                imageView.setImageURI(newImage);
+
+            }
+
+        }
 
 
         mAWSAppSyncClient = AWSAppSyncClient.builder()
