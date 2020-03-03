@@ -112,5 +112,5 @@ Individual Notification -
 ![Notification PinPoint Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2010.07.16%20AM.png)
 
 Multiple notifications - 
-![Notification FireBase Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-02%20at%202.27.57%20PM.png
+![Notification FireBase Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2010.03.34%20AM.png
 )
