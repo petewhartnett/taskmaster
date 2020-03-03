@@ -132,7 +132,7 @@ References
 ![Intent Filter Screen Shot 1](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2011.03.18%20AM.png)
 
 
-![Intent Filter Screen Shot 2](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2010.03.34%20AM.png
+![Intent Filter Screen Shot 2](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2011.37.25%20AM.png
 )
 
 
