@@ -106,10 +106,11 @@ also used AWS s3 documentation.
 - set up a segment in pinpoint
 - set up a campaign in pinpoint
 
-Current status of nomtification - Everything is working on the back end with no errors with pinpoint or firebase, but it does not show up on the emulator of the device. 
+Notifcation screen shots below: 
 
-![Notification PinPoint Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-02%20at%202.27.34%20PM.png)
+Individual Notification - 
+![Notification PinPoint Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2010.07.16%20AM.png)
 
-
+Multiple notifications - 
 ![Notification FireBase Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-02%20at%202.27.57%20PM.png
 )
