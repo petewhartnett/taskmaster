@@ -93,7 +93,7 @@ also used AWS s3 documentation.
 
 Of Note: No new screen shots as most changes were in the backend old screen shots still apply
 
-APK - 
+
 
 
 
@@ -114,3 +114,25 @@ Individual Notification -
 Multiple notifications - 
 ![Notification FireBase Screen Shot](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2010.03.34%20AM.png
 )
+
+
+
+
+
+# Day 10 - 
+References 
+- Class 3/2/2020 Front Row video referenced for intent filter addition
+- Android documentation used for set-up https://developer.android.com/training/basics/intents/filters
+
+
+- Placed Intent Filter code into the xml manifest document
+- Made image sharable, text is also set up to be sharable
+- Set up add task to take the Uri of the image selected
+
+![Intent Filter Screen Shot 1](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2011.03.18%20AM.png)
+
+
+![Intent Filter Screen Shot 2](https://github.com/petewhartnett/taskmaster/blob/master/Screen%20Shot%202020-03-03%20at%2010.03.34%20AM.png
+)
+
+
