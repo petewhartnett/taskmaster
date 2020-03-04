@@ -5,6 +5,7 @@ subscription OnCreateTasks {
     title
     body
     state
+    city
   }
 }
 subscription OnUpdateTasks {
@@ -13,6 +14,7 @@ subscription OnUpdateTasks {
     title
     body
     state
+    city
   }
 }
 subscription OnDeleteTasks {
@@ -21,5 +23,6 @@ subscription OnDeleteTasks {
     title
     body
     state
+    city
   }
 }

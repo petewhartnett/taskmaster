@@ -169,10 +169,10 @@ public class TasksFragment extends Fragment {
     private GraphQLCall.Callback<ListTaskssQuery.Data> todosCallback = new GraphQLCall.Callback<ListTaskssQuery.Data>() {
         @Override
         public void onResponse(@Nonnull Response<ListTaskssQuery.Data> response) {
-            Log.i("Results", response.data().listTaskss().items().toString());
+            //Log.i("Results", response.data().listTaskss().items().toString());
 
             for(ListTaskssQuery.Item item : response.data().listTaskss().items() ){
-                listOfTasks.add(new Tasks(item.title(), item.body(), item.state()));
+                listOfTasks.add(new Tasks(item.title(), item.body(), item.state(), item.city()));
 
             }
         }

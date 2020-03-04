@@ -8,6 +8,7 @@ mutation CreateTasks(
     title
     body
     state
+    city
   }
 }
 mutation UpdateTasks(
@@ -19,6 +20,7 @@ mutation UpdateTasks(
     title
     body
     state
+    city
   }
 }
 mutation DeleteTasks(
@@ -30,5 +32,6 @@ mutation DeleteTasks(
     title
     body
     state
+    city
   }
 }

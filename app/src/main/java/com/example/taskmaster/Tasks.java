@@ -13,12 +13,14 @@ public class Tasks {
     String title;
     String body;
     String state;
+    String city;
 
 
-    public Tasks(String title, String body, String state) {
+    public Tasks(String title, String body, String state, String city) {
         this.title = title;
         this.body = body;
         this.state = state;
+        this.city = city;
     }
 
 
@@ -36,6 +38,9 @@ public class Tasks {
         return body;
     }
 
+    public String getCity() {
+        return city;
+    }
 
 
 
