@@ -136,3 +136,17 @@ References
 )
 
 
+# Day 11 - 
+References 
+- Class 3/3/2020 Front Row video referenced for intent filter addition
+- Android documentation used for set-up https://developer.android.com/
+- reference https://stackoverflow.com/questions/22323974/how-to-get-city-name-by-latitude-longitude-in-android
+
+
+- Updated Schema to have the location save to database
+- Updated the Task constructor
+- Updated saving funtionality to include the locaiton
+- Updated the recycler view to display the location. 
+
+
+The location is not displaying, I will update images once the location is displaying properly. 
