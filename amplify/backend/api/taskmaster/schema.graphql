@@ -3,4 +3,5 @@ type Tasks @model {
   title: String!
   body: String
   state: String
+  city: String
 }

@@ -51,7 +51,9 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
         holder.mItem = mValues.get(position);
         holder.mTitleView.setText(mValues.get(position).getBody());
         holder.mBodyView.setText(mValues.get(position).getTitle());
+        holder.mLocationView.setText(mValues.get(position).getCity());
         holder.mAssignedView.setText(mValues.get(position).getState());
+
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
 
@@ -104,6 +106,7 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
         public final TextView mTitleView;
         public final TextView mBodyView;
         public final TextView mAssignedView;
+        public final TextView mLocationView;
         public Tasks mItem;
 
         public ViewHolder(View view) {
@@ -112,6 +115,7 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
             mTitleView = (TextView) view.findViewById(R.id.title);
             mBodyView = (TextView) view.findViewById(R.id.body);
             mAssignedView = (TextView) view.findViewById(R.id.state);
+            mLocationView = (TextView) view.findViewById(R.id.city);
         }
 
 //        @Override
